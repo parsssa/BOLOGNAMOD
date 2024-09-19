@@ -1,15 +1,11 @@
 import React from 'react';
-import GraphComponent from './components/Graph/GraphComponent';
+import GraphComponent from './components/GraphComponent';
 
 function App() {
   return (
     <div className="App">
-      <header>
-        <h1>My mxGraph React App</h1>
-      </header>
-      <main>
-        <GraphComponent />
-      </main>
+      <h1>My React App with mxGraph</h1>
+      <GraphComponent />
     </div>
   );
 }
