@@ -1,12 +1,18 @@
 import React from 'react';
-import GraphComponent from './components/GraphComponent';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './components/Home/Home';
+import Documentation from './components/Documentation/Documentation';
 
 function App() {
   return (
-    <div className="App">
-      <h1>My React App with mxGraph</h1>
-      <GraphComponent />
-    </div>
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/documentation" element={<Documentation />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
