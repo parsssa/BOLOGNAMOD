@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import './Toolbar.css';
-import { FaQuestionCircle } from 'react-icons/fa';
+import { FaQuestionCircle, FaFileAlt, FaInfoCircle } from 'react-icons/fa';
 
 const Toolbar = ({ onNewSchema, onSave, onLoad, onExport, onAddEntity, onAddRelation, onAddGeneralization }) => {
   const [isFileMenuOpen, setFileMenuOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
 
   const toggleFileMenu = () => {
     setFileMenuOpen((prev) => !prev);
@@ -24,25 +25,42 @@ const Toolbar = ({ onNewSchema, onSave, onLoad, onExport, onAddEntity, onAddRela
     };
   }, []);
 
+  const goToDocumentation = () => {
+    navigate('/documentation');
+  };
+
+  const goToInfo = () => {
+    navigate('/info'); // Naviga alla pagina Informazioni
+  };
+
   return (
     <div className="toolbar">
-      <div className="dropdown" ref={dropdownRef}>
-        <button className="dropbtn" onClick={toggleFileMenu}>File</button>
-        {isFileMenuOpen && (
-          <div className="dropdown-content">
-            <button onClick={onNewSchema}>Nuovo Schema</button>
-            <button onClick={onLoad}>Carica</button>
-            <button onClick={onSave}>Salva</button>
-            <button onClick={onExport}>Esporta</button>
-          </div>
-        )}
+      <div className="toolbar-row">
+        <div className="dropdown" ref={dropdownRef}>
+          <button className="toolbar-button dropbtn" onClick={toggleFileMenu}>
+            <FaFileAlt /> File
+          </button>
+          {isFileMenuOpen && (
+            <div className="dropdown-content">
+              <button className="dropdown-item" onClick={onNewSchema}>Nuovo Schema</button>
+              <button className="dropdown-item" onClick={onLoad}>Carica</button>
+              <button className="dropdown-item" onClick={onSave}>Salva</button>
+              <button className="dropdown-item" onClick={onExport}>Esporta</button>
+            </div>
+          )}
+        </div>
+        <button className="toolbar-button" onClick={goToDocumentation}>
+          <FaQuestionCircle /> Aiuto
+        </button>
+        <button className="toolbar-button" onClick={goToInfo}>
+          <FaInfoCircle /> Informazioni
+        </button>
       </div>
-      <button className="toolbar-button" onClick={onAddEntity}>Aggiungi Entità</button>
-      <button className="toolbar-button" onClick={onAddRelation}>Aggiungi Relazione</button>
-      <button className="toolbar-button" onClick={onAddGeneralization}>Aggiungi Generalizzazione</button>
-      <Link to="/documentation" className="toolbar-button">
-        <FaQuestionCircle /> Aiuto
-      </Link>
+      <div className="action-buttons">
+        <button className="toolbar-button" onClick={onAddEntity}>Aggiungi Entità</button>
+        <button className="toolbar-button" onClick={onAddRelation}>Aggiungi Relazione</button>
+        <button className="toolbar-button" onClick={onAddGeneralization}>Aggiungi Generalizzazione</button>
+      </div>
     </div>
   );
 };

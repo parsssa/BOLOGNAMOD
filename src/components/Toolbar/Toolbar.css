@@ -1,17 +1,65 @@
+.toolbar {
+  display: flex;
+  flex-direction: column; /* Colonne per i due gruppi di bottoni */
+  align-items: center;
+  background-color: #f8f9fa; /* Colore di sfondo chiaro */
+  padding: 10px;
+  border-bottom: 1px solid #dee2e6; /* Linea sottile per separare */
+}
+
+.toolbar-row {
+  display: flex;
+  justify-content: center; /* Centra orizzontalmente */
+  width: 100%;
+  margin-bottom: 30px;
+}
+
 .toolbar-button {
-    margin-left: 10px;
-    padding: 8px 12px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-  }
-  
-  .toolbar-button:hover {
-    background-color: #0056b3;
-  }
-  
+  margin: 0 5px; /* Margine uniformato */
+  padding: 10px 16px; /* Altezza uniforme */
+  background-color: #007bff; /* Colore primario */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  transition: background-color 0.3s ease; /* Transizione per il hover */
+}
+
+.toolbar-button:hover {
+  background-color: #0056b3; /* Colore al passaggio del mouse */
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-item {
+  padding: 10px 16px; /* Altezza uniforme */
+  background: none; /* Rimuovi sfondo */
+  border: none; /* Rimuovi bordo */
+  text-align: left;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background-color: #f1f1f1; /* Colore di sfondo al passaggio del mouse */
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: center; /* Centra orizzontalmente */
+  width: 100%;
+}
